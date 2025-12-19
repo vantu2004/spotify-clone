@@ -1,6 +1,8 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import { clerkMiddleware } from "@clerk/express";
+
 import userRoutes from "./routes/user.route.js";
 import authRoutes from "./routes/auth.route.js";
 import adminRoutes from "./routes/admin.route.js";
@@ -21,6 +23,9 @@ app.use(
   })
 );
 app.use(express.json());
+
+// this will add auth to req obj => req.auth
+app.use(clerkMiddleware());
 
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
