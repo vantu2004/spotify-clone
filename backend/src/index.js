@@ -21,9 +21,9 @@ const __dirname = path.resolve();
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "http://localhost:3000",
     credentials: true,
-  })
+  }),
 );
 app.use(express.json());
 
@@ -35,7 +35,7 @@ app.use(
     tempFileDir: path.join(__dirname, "../tmp"),
     createParentPath: true,
     limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
-  })
+  }),
 );
 
 app.use("/api/users", userRoutes);
@@ -50,14 +50,12 @@ app.use((err, req, res, next) => {
   if (process.env.NODE_ENV === "development") {
     console.error(err.stack);
   }
-  res
-    .status(err.status || 500)
-    .json({
-      message:
-        process.env.NODE_ENV === "development"
-          ? err.message
-          : "Internal Server Error",
-    });
+  res.status(err.status || 500).json({
+    message:
+      process.env.NODE_ENV === "development"
+        ? err.message
+        : "Internal Server Error",
+  });
 });
 
 app.listen(PORT, () => {
