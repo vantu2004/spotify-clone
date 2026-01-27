@@ -1,8 +1,4 @@
 import { Outlet } from "react-router-dom";
-// import LeftSidebar from "./components/LeftSidebar";
-// import FriendsActivity from "./components/FriendsActivity";
-// import AudioPlayer from "./components/AudioPlayer";
-// import { PlaybackControls } from "./components/PlaybackControls";
 import { useEffect, useState } from "react";
 import {
   ResizableHandle,
@@ -10,6 +6,7 @@ import {
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
 import LeftSidebar from "./components/LeftSidebar";
+import FriendsActivity from "./components/FriendActivity";
 
 const MainLayout = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -58,8 +55,7 @@ const MainLayout = () => {
               maxSize={25}
               collapsedSize={0}
             >
-              {/* <FriendsActivity /> */}
-              Resizeable Panel
+              <FriendsActivity />
             </ResizablePanel>
           </>
         )}
