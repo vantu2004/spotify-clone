@@ -1,26 +1,12 @@
-import React from "react";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "@/pages/home/HomePage";
 import AuthCallbackPage from "@/pages/auth-callback/AuthCallbackPage";
-import { axiosInstance } from "./lib/axios";
 import { AuthenticateWithRedirectCallback } from "@clerk/clerk-react";
-import MainLayout from "./layout/MainLayout";
-import ChatPage from "./pages/chat/ChatPage";
+import MainLayout from "@/layout/MainLayout";
+import ChatPage from "@/pages/chat/ChatPage";
+import AlbumPage from "@/pages/album/AlbumPage";
 
 const App = () => {
-  // const getUserData = async () => {
-  //   try {
-  //     const response = await axiosInstance.get("/users", {
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     });
-  //     console.log("User data:", response.data);
-  //   } catch (error) {
-  //     console.error("Error fetching user data:", error);
-  //   }
-  // };
-
   return (
     <>
       <Routes>
@@ -37,6 +23,7 @@ const App = () => {
         <Route element={<MainLayout />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/chat" element={<ChatPage />} />
+          <Route path="/album/:albumId" element={<AlbumPage />} />
         </Route>
       </Routes>
     </>
