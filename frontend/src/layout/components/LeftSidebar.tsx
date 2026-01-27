@@ -2,40 +2,18 @@ import PlaylistSkeleton from "@/components/skeletons/PlaylistSkeleton";
 import { buttonVariants } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
-// import { useMusicStore } from "@/stores/useMusicStore";
+import { useMusicStore } from "@/stores/useMusicStore";
 import { SignedIn } from "@clerk/clerk-react";
 import { HomeIcon, Library, MessageCircle } from "lucide-react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const LeftSidebar = () => {
-  // const { albums, fetchAlbums, isLoading } = useMusicStore();
+  const { albums, fetchAlbums, isLoading } = useMusicStore();
 
-  // useEffect(() => {
-  //   fetchAlbums();
-  // }, [fetchAlbums]);
-
-  const isLoading = true;
-  const albums = [
-    {
-      _id: 1,
-      title: "Album 1",
-      artist: "Artist 1",
-      imageUrl: "https://via.placeholder.com/150",
-    },
-    {
-      _id: 2,
-      title: "Album 2",
-      artist: "Artist 2",
-      imageUrl: "https://via.placeholder.com/150",
-    },
-    {
-      _id: 3,
-      title: "Album 3",
-      artist: "Artist 3",
-      imageUrl: "https://via.placeholder.com/150",
-    },
-  ];
+  useEffect(() => {
+    fetchAlbums();
+  }, [fetchAlbums]);
 
   return (
     <div className="h-full flex flex-col gap-2">
