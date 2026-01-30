@@ -3,7 +3,7 @@ import type { User } from "@/types";
 import { create } from "zustand";
 
 interface ChatStore {
-  user: User | null;
+  users: User[];
   isLoading: boolean;
   error: string | null;
 
@@ -11,7 +11,7 @@ interface ChatStore {
 }
 
 export const useChatStore = create<ChatStore>((set) => ({
-  user: null,
+  users: [],
   isLoading: false,
   error: null,
 
@@ -20,7 +20,7 @@ export const useChatStore = create<ChatStore>((set) => ({
 
     try {
       const response = await axiosInstance.get("/users");
-      set({ user: response.data.user });
+      set({ users: response.data.users });
     } catch (error: any) {
       console.error("Failed to fetch users:", error);
       set({
