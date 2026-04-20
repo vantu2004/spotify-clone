@@ -2,9 +2,10 @@ import { Song } from "../models/song.model.js";
 import { Album } from "../models/album.model.js";
 import cloudinary from "../lib/cloudinary.js";
 
+// về cơ bản req phải đi qua 2 middleware bảo vệ rồi nên mới vào được đây nên chỉ cần trả true là đc
 export const checkAdmin = async (req, res, next) => {
   try {
-    res.status(200).json({ message: "Admin access granted." });
+    res.status(200).json({ isAdmin: true });
   } catch (error) {
     next(error);
   }

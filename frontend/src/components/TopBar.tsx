@@ -37,6 +37,8 @@ const Topbar = () => {
         <SignedOut>
           <SignInOAuthButtons />
         </SignedOut>
+
+        <UserButton />
       </div>
     </div>
   );
